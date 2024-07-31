@@ -5,6 +5,7 @@
 
 import { parseArgs } from "@std/cli";
 import { discoverIgnoreFiles, flattenIgnoreFiles } from "./mod.ts";
+import { assert } from "@std/assert";
 
 export * from "./mod.ts";
 
@@ -84,5 +85,12 @@ if (import.meta.main) {
     Deno.stdout.write(new TextEncoder().encode(content));
   } else {
     Deno.writeTextFile(args.out, content);
+  }
+
+  if (args.remove) {
+    for (const file of files) {
+      assert(file.isFile);
+      Deno.removeSync(file.path);
+    }
   }
 }
