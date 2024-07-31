@@ -35,8 +35,10 @@ const NEWLINE_NODE: Node = {
 export type DiscoverIgnoreFilesOptions = {
   /** The directory in which to search for ignore files. */
   directory?: string | URL;
-  /** The glob pattern used to search for ignore files. */
-  ignoreFileGlobPattern?: string;
+  /** The glob patterns used to search for ignore files. */
+  ignoreFileGlobPattern?: string[];
+  /** Exclude ignore files matching the provied patterns. */
+  excludeGlobPattern?: string[];
   /** Options to modify glob syntax and behaviour. */
   globOptions?: GlobOptions;
 };
@@ -44,12 +46,18 @@ export type DiscoverIgnoreFilesOptions = {
 /** Searches a directory for ignore files. */
 export function discoverIgnoreFiles({
   directory = ".",
-  ignoreFileGlobPattern = "**/.gitignore",
+  ignoreFileGlobPattern = ["**/.gitignore"],
+  excludeGlobPattern = ["**/node_modules"],
   globOptions,
 }: DiscoverIgnoreFilesOptions): IterableIterator<WalkEntry> {
   return walkSync(directory, {
     includeDirs: false,
-    match: [globToRegExp(ignoreFileGlobPattern, globOptions)],
+    match: ignoreFileGlobPattern.map((pattern) =>
+      globToRegExp(pattern, globOptions)
+    ),
+    skip: excludeGlobPattern.map((pattern) =>
+      globToRegExp(pattern, globOptions)
+    ),
   });
 }
 

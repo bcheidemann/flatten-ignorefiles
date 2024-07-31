@@ -21,6 +21,9 @@ Options:
   -g, --glob               The glob pattern used to search for ignore
                            files.
                            (default: "**/.gitignore")
+  -e, --exclude-glob       Exclude ignore files matching the provied
+                           pattern.
+                           (default: "**/node_modules")
   -o, --out                The output file path for the flattened ignore
                            file. If not provided, the flattened file will
                            be logged to stdout. Relative to --dir.

@@ -18,14 +18,16 @@ if (import.meta.main) {
       "strip-whitespace",
       "strip-comments",
     ],
-    string: ["dir", "glob", "out"],
+    string: ["dir", "glob", "exclude-glob", "out"],
     alias: {
       h: "help",
       d: "dir",
       g: "glob",
+      e: "exclude-glob",
       o: "out",
       r: "remove",
     },
+    collect: ["glob", "exclude-glob"],
     default: {
       dir: ".",
       glob: "**/.gitignore",
@@ -50,6 +52,9 @@ if (import.meta.main) {
       "  -g, --glob               The glob pattern used to search for ignore",
       "                           files.",
       '                           (default: "**/.gitignore")',
+      "  -e, --exclude-glob       Exclude ignore files matching the provied",
+      "                           pattern.",
+      '                           (default: "**/node_modules")',
       "  -o, --out                The output file path for the flattened ignore",
       "                           file. If not provided, the flattened file will",
       "                           be logged to stdout. Relative to --dir.",
@@ -71,7 +76,10 @@ if (import.meta.main) {
 
   const files = Array.from(discoverIgnoreFiles({
     directory: args.dir,
-    ignoreFileGlobPattern: args.glob,
+    ignoreFileGlobPattern: Array.isArray(args.glob) ? args.glob : [args.glob],
+    excludeGlobPattern: Array.isArray(args["exclude-glob"])
+      ? args["exclude-glob"]
+      : [args["exclude-glob"]],
   }));
 
   const content = flattenIgnoreFiles(files, {
