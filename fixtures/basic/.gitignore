@@ -1,0 +1,14 @@
+# This is a comment
+## This is another comment
+
+!/some/file
+!some/file
+/some/file
+some/file
+!/some/**/glob
+!some/**/glob
+/some/**/glob
+some/**/glob
+  leading/whitespace
+trailing/whitespace  
+  leading/and/trailing/whitespace  
