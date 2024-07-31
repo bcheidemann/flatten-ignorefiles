@@ -87,8 +87,8 @@ export function flattenIgnoreFiles(
 
     if (!skipSourceComments) {
       flattenedNodes.push(
-        { kind: "comment", text: `### ${relativePath}\n` },
         NEWLINE_NODE,
+        { kind: "comment", text: `### ${relativePath}\n` },
       );
     }
 
@@ -118,6 +118,11 @@ export function flattenIgnoreFiles(
     }
 
     flattenedNodes.push(...nodes);
+  }
+
+  if (!skipSourceComments) {
+    // Remove the leading whitespace
+    flattenedNodes.shift();
   }
 
   return flattenedNodes.map(unstableEmitNode).join("");
