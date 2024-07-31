@@ -1,3 +1,24 @@
+/**
+ * @module
+ * This module contains functions for programatically discovering, parsing and
+ * flattening ignore files.
+ *
+ * @example
+ * ```ts
+ * import { discoverIgnoreFiles, flattenIgnoreFiles } from "jsr:@bcheidemann/flatten-ignorefiles";
+ *
+ * const files = discoverIgnoreFiles({
+ *  // Options
+ * });
+ *
+ * const content = flattenIgnoreFiles(files, {
+ *  // Options
+ * });
+ *
+ * console.log(content);
+ * ```
+ */
+
 import { type WalkEntry, walkSync } from "@std/fs/walk";
 import { type GlobOptions, globToRegExp } from "@std/path/glob-to-regexp";
 import { joinGlobs } from "@std/path/join-globs";

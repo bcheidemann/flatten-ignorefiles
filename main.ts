@@ -1,3 +1,8 @@
+/**
+ * @module
+ * Re-export of `@bcheidemann/flatten-ignorefiles/mod`.
+ */
+
 import { parseArgs } from "@std/cli";
 import { discoverIgnoreFiles, flattenIgnoreFiles } from "./mod.ts";
 
