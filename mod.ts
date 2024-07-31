@@ -102,40 +102,39 @@ export function flattenIgnoreFiles(
   return flattenedNodes.map(unstableEmitNode).join("");
 }
 
+/** Unstable. Ignore file comment AST node. */
 export type CommentNode = {
   kind: "comment";
+  /** The full text of the commnet. Includes the leading "#". */
   text: string;
 };
 
+/** Unstable. Ignore file whitespace AST node. */
 export type WhitespaceNode = {
   kind: "whitespace";
+  /** The whitespace text. */
   text: string;
 };
 
+/** Unstable. Ignore file entry AST node. */
 export type EntryNode = {
   kind: "entry";
+  /** If the entry is negated i.e. it starts with a "!". */
   negated: boolean;
+  /** The glob string for the entry. */
   glob: string;
 };
 
 export type Node = CommentNode | WhitespaceNode | EntryNode;
 
-/**
- * Parse an ignore file to AST nodes.
- *
- * This function is unstable.
- */
+/** Unstable. Parse an ignore file to AST nodes. */
 export function unstableParseIgnoreFile(path: string): Node[] {
   const content = Deno.readTextFileSync(path);
 
   return content.split("\n").flatMap(unstableParseIgnoreFileLine);
 }
 
-/**
- * Parse a single line of an ignore file to AST nodes.
- *
- * This function is unstable.
- */
+/** Unstable. Parse a single line of an ignore file to AST nodes. */
 export function unstableParseIgnoreFileLine(line: string): Node[] {
   const lineTrimmed = line.trim();
 
@@ -187,11 +186,7 @@ export function unstableParseIgnoreFileLine(line: string): Node[] {
   return nodes;
 }
 
-/**
- * Emit an ignore file AST node as a string.
- *
- * This function is unstable.
- */
+/** Unstable. Emit an ignore file AST node as a string. */
 export function unstableEmitNode(node: Node): string {
   switch (node.kind) {
     case "comment":
