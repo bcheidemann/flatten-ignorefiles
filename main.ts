@@ -69,10 +69,10 @@ if (import.meta.main) {
     Deno.exit(0);
   }
 
-  const files = discoverIgnoreFiles({
+  const files = Array.from(discoverIgnoreFiles({
     directory: args.dir,
     ignoreFileGlobPattern: args.glob,
-  });
+  }));
 
   const content = flattenIgnoreFiles(files, {
     baseDirectory: args.dir,

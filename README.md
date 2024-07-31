@@ -5,7 +5,7 @@ A CLI utility to recursively discover ignore files, and flatten them into a sing
 ## Installation
 
 ```sh
-deno install -g jsr:@bcheidemann/flatten-ignorefiles -n flatten-ignorefiles
+deno install --allow-read --allow-write -g jsr:@bcheidemann/flatten-ignorefiles -n flatten-ignorefiles
 ```
 
 ## Usage

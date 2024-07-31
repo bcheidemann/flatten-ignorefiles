@@ -69,7 +69,7 @@ export type FlattenIgnoreFilesOptions = {
 
 /** Flattens a list of ignore files into a single ignore file. Use `flattenIgnoreFiles` to discover ignore files in a directory. */
 export function flattenIgnoreFiles(
-  files: IterableIterator<WalkEntry>,
+  files: IterableIterator<WalkEntry> | Array<WalkEntry>,
   {
     baseDirectory = ".",
     globOptions,
