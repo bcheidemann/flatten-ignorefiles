@@ -3,6 +3,7 @@
  * Re-export of `@bcheidemann/flatten-ignorefiles/mod`.
  */
 
+import denoJson from "./deno.json" with { type: "json" };
 import { parseArgs } from "@std/cli";
 import { discoverIgnoreFiles, flattenIgnoreFiles } from "./mod.ts";
 import { assert } from "@std/assert";
@@ -12,6 +13,7 @@ export * from "./mod.ts";
 if (import.meta.main) {
   const args = parseArgs(Deno.args, {
     boolean: [
+      "version",
       "help",
       "remove",
       "skip-source-comments",
@@ -20,6 +22,7 @@ if (import.meta.main) {
     ],
     string: ["dir", "glob", "exclude-glob", "out"],
     alias: {
+      v: "version",
       h: "help",
       d: "dir",
       g: "glob",
@@ -40,6 +43,12 @@ if (import.meta.main) {
       Deno.exit(1);
     },
   });
+
+  if (args.version) {
+    // deno-lint-ignore no-explicit-any
+    console.log((denoJson as any).version);
+    Deno.exit(0);
+  }
 
   if (args.help) {
     console.log([
