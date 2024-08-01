@@ -19,8 +19,9 @@ jobs:
         run: npx jsr publish
 
   publish-npm:
-    name: Publish (Deno)
+    name: Publish (NPM)
     runs-on: ubuntu-latest
+    environment: main
 
     permissions:
       contents: read
