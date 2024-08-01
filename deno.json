@@ -6,7 +6,13 @@
     "dev": "deno run main.ts",
     "build:npm": "deno run -A scripts/build_npm.ts"
   },
-  "imports": {},
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.2",
+    "@std/assert": "jsr:@std/assert@^1.0.1",
+    "@std/cli": "jsr:@std/cli@^1.0.1",
+    "@std/fs": "jsr:@std/fs@^1.0.0",
+    "@std/path": "jsr:@std/path@^1.0.2"
+  },
   "exports": {
     ".": "./main.ts",
     "./mod": "./mod.ts"
