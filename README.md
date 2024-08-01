@@ -1,11 +1,22 @@
+[![JSR](https://jsr.io/badges/@bcheidemann/flatten-ignorefiles)](https://jsr.io/@bcheidemann/flatten-ignorefiles)
+[![JSR](https://img.shields.io/npm/v/flatten-ignorefiles)](https://www.npmjs.com/package/flatten-ignorefiles)
+
 # flatten-ignorefiles
 
 A CLI utility to recursively discover ignore files, and flatten them into a single file.
 
 ## Installation
 
+### Deno
+
 ```sh
-deno install --allow-read --allow-write -g jsr:@bcheidemann/flatten-ignorefiles -n flatten-ignorefiles
+deno install -g --allow-read --allow-write jsr:@bcheidemann/flatten-ignorefiles -n flatten-ignorefiles
+```
+
+### NPM
+
+```sh
+npm install -g flatten-ignorefiles
 ```
 
 ## Usage
