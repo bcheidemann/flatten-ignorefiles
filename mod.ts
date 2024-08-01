@@ -19,12 +19,12 @@
  * ```
  */
 
-import { type WalkEntry, walkSync } from "@std/fs/walk";
-import { type GlobOptions, globToRegExp } from "@std/path/glob-to-regexp";
-import { joinGlobs } from "@std/path/join-globs";
-import { relative } from "@std/path/relative";
-import { dirname } from "@std/path/dirname";
-import { assert } from "@std/assert";
+import { type WalkEntry, walkSync } from "jsr:@std/fs/walk";
+import { type GlobOptions, globToRegExp } from "jsr:@std/path/glob-to-regexp";
+import { joinGlobs } from "jsr:@std/path/join-globs";
+import { relative } from "jsr:@std/path/relative";
+import { dirname } from "jsr:@std/path/dirname";
+import { assert } from "jsr:@std/assert";
 
 const NEWLINE_NODE: Node = {
   kind: "whitespace",
