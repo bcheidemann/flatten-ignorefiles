@@ -51,6 +51,24 @@ Options:
                            (default: false)
 ```
 
+### Use Case: Flatten and remove recursive .gitignore files
+
+The following command will flatten all recursive `.gitignore` files into a
+single root file, deleting the other files.
+
+```sh
+$ flatten-ignorefiles --out .gitignore --remove
+```
+
+### Use Case: Convert recursive .gitignore files into a non-recursive .dockerignore file
+
+The following command will flatten all recursive `.gitignore` files into a
+single root `.dockerignore` file, preserving the `.gitignore` files.
+
+```sh
+$ flatten-ignorefiles --out .dockerignore --remove
+```
+
 ## Programatic Usage
 
 ```ts
