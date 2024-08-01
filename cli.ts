@@ -91,16 +91,16 @@ export function run() {
     stripWhitespace: args["strip-whitespace"],
   });
 
-  if (args.out === false) {
-    Deno.stdout.write(new TextEncoder().encode(content));
-  } else {
-    Deno.writeTextFile(args.out, content);
-  }
-
   if (args.remove) {
     for (const file of files) {
       assert(file.isFile);
       Deno.removeSync(file.path);
     }
+  }
+
+  if (args.out === false) {
+    Deno.stdout.write(new TextEncoder().encode(content));
+  } else {
+    Deno.writeTextFile(args.out, content);
   }
 }
