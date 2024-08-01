@@ -1,7 +1,7 @@
 import denoJson from "./deno.json" with { type: "json" };
-import { parseArgs } from "@std/cli";
+import { parseArgs } from "jsr:@std/cli@^1.0.1";
+import { assert } from "jsr:@std/assert@^1.0.1";
 import { discoverIgnoreFiles, flattenIgnoreFiles } from "./mod.ts";
-import { assert } from "@std/assert";
 
 export function run() {
   const args = parseArgs(Deno.args, {
